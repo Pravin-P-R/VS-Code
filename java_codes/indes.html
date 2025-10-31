@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hello — HTML + JavaScript</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      background: #f7f7f9;
+    }
+    .card {
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      width: 320px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 8px 10px;
+      margin: 8px 0 12px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 12px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="card" role="region" aria-label="Greeting card">
+    <h2>Hello, World!</h2>
+    <label for="nameInput">Enter your name:</label>
+    <input id="nameInput" type="text" placeholder="Type your name" />
+    <button id="greetBtn">Greet me</button>
+    <div id="result" class="result" aria-live="polite"></div>
+  </div>
+
+  <script>
+    const input = document.getElementById('nameInput');
+    const btn = document.getElementById('greetBtn');
+    const result = document.getElementById('result');
+
+    function greet() {
+      const name = input.value.trim();
+      if (name) {
+        result.textContent = `Hello, ${name}! Welcome to Java Programming.`;
+      } else {
+        result.textContent = 'Hello! Please enter your name above.';
+      }
+    }
+
+    // handle button click
+    btn.addEventListener('click', greet);
+
+    // allow Enter key to submit
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') greet();
+    });
+
+    // optional: focus the input on load
+    input.focus();
+  </script>
+</body>
+</html>
